@@ -84,9 +84,9 @@ public class LinkedList<T> {
 
 
     
-    public LinkedList<T> prefixer(T value_)
+    public LinkedList<T> prefixer(T value2)
     {
-        return new LinkedList<T>(value_, this);
+        return new LinkedList<T>(value2, this);
     }
 
     public LinkedList<T> inserer(T value_)
@@ -95,7 +95,11 @@ public class LinkedList<T> {
         return this.reste().inserer(value_).prefixer(this.tete());
     }
     
-
+    public LinkedList<T> insererOrd(T value)
+    {
+        if(this.vide()) return this.prefixer(value);
+        return ((Arbre) this.tete()).infoi()  > ((Arbre) value).infoi()  ? this.prefixer(value) : this.reste().insererOrd(value).prefixer((T) this.tete());
+    }
 
 
     @Override
