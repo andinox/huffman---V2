@@ -54,7 +54,7 @@ public class huffman
 
     /**
      * Function récursive.
-     * Permet de convertir la list de frequence 
+     * Permet de convertir la list de fréquence 
      * en une list d'Arbre pour permettre l'utilisation du
      * code de Huffman.
      * 
@@ -72,7 +72,7 @@ public class huffman
 
 
     /**
-     * Récupère la liste renvoyée de la fonction Huffman et retourne
+     * Récupère la liste renvoyée de la fonction Huffman et retourne.
      * l'arbre contenu dedans
      * 
      * @param frequency_l list des frequences des differents caractères mais dans un liste d'arbre
@@ -184,6 +184,15 @@ public class huffman
     }
 
 
+    /**
+     * function récursive simple qui modifie la taille 
+     * du string binaire en function des premieres valeurs trouvées
+     * 
+     * 
+     * @param binaire
+     * @param tree
+     * @return
+     */
     public static String decode(String binaire, Arbre tree) {
         String carrac = callback_decode(binaire,tree);
         int one = getBinaryCode(tree, carrac).length();
@@ -197,11 +206,17 @@ public class huffman
 
 
     /**
+     * function callback qui cherche de meniere récursive 
+     * en suivant l'arbre binaire de huffman
+     * 
+     * Si la premiere valeurs du code est 0 on vas a gauche
+     * sinon on vas a droite 
+     * jusqu'a trouver un carractere
      * 
      * 
      * @param binaire le text en binaire a décodé
-     * @param codes liste des codes de chaque carractere
-     * @return
+     * @param tree liste des codes de chaque carractere
+     * @return le premiere carractere trouvé dans l'arbre via le code binaire
      */
     private static String callback_decode(String binaire, Arbre tree) {
         String valeur;
