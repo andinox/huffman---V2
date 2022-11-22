@@ -17,6 +17,8 @@ public class huffman
 
     /** 
      * Charge la frequence des lettres contenus depuis le fichier ODS.
+     * Utilisation d'un library externe parce que je ne sais oas 
+     * comment ouvrir un fichier ODS
      * 
      * @param path chemin d'accès au fichier ODS. 
      * @return une liste chainée à deux dimensions qui contient les values du fichier ODS.
@@ -77,10 +79,10 @@ public class huffman
      * 
      * @param frequency_l list des frequences des differents caractères mais dans un liste d'arbre
      * @return un Arbre
-     * @see huffman
+     * @see huffmanalgo
      */
     public static Arbre getHuffman(LinkedList<Arbre> frequency_l) {
-        return huffman(frequency_l).tete();
+        return huffmanalgo(frequency_l).tete();
     }
 
     /** 
@@ -88,12 +90,12 @@ public class huffman
      * @param frequency_l list des frequences des differents caractères mais dans un liste d'arbre
      * @return Une list contenant qu'un seul arbre.
      */
-    private static LinkedList<Arbre> huffman(LinkedList<Arbre> frequency_l) {
+    private static LinkedList<Arbre> huffmanalgo(LinkedList<Arbre> frequency_l) {
         if (frequency_l.size() == 1) return frequency_l;
         Arbre frist = frequency_l.tete();
         Arbre second = frequency_l.reste().tete();
         int somme = frist.infoi() + second.infoi();
-        return huffman(frequency_l.reste().reste().insererOrd(new Arbre(somme, "somme", frist, second)));
+        return huffmanalgo(frequency_l.reste().reste().insererOrd(new Arbre(somme, "somme", frist, second)));
     }
 
 
